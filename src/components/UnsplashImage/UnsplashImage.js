@@ -1,11 +1,14 @@
 import React from 'react';
-import { Img, AuthorName, ImageWrapper } from '../../styles/UnsplashImage.styles';
+import { Img, AuthorName, ImageWrapper, Thumbnail } from '../../styles/UnsplashImage.styles';
 
-export const UnsplashImage = ({ url, author }) => {
+export const UnsplashImage = ({ url, author, thumbnail }) => {
   return (
     <ImageWrapper>
       <Img src={url} alt={author} />
-      <AuthorName>Photo by {author}</AuthorName>
+      <AuthorName>
+        <Thumbnail src={thumbnail} alt={`${author}'s thumbnail`} />
+        Photo by {author}
+      </AuthorName>
     </ImageWrapper>
   );
 };
