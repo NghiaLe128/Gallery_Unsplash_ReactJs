@@ -56,6 +56,7 @@ function App() {
               url={image.urls.small}
               author={image.user.name}
               viewType={viewType}
+              thumbnail={image.urls.small}
             />
           ))}
         </WrapperImages>
