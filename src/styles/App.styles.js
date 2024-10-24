@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const WrapperImages = styled.section`
+export const WrapperImages = styled(({ viewType, ...rest }) => <section {...rest} />)`
   max-width: 80rem;
   margin: 4rem auto;
   display: grid;
