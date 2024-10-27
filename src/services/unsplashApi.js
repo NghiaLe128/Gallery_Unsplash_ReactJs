@@ -27,3 +27,14 @@ export const fetchPhotos = async (page = 1) => {
   }
 };
 
+export const fetchPhotoById = async (id) => {
+  try {
+    const response = await axios.get(`${apiRoot}/photos/${id}`, {
+      params: { client_id: accessKey },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching photo by ID:", error);
+    throw error;
+  }
+};
