@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Header, H1, Input, Button, ViewButton, ButtonContainer, Description } from '../../styles/Heading.styles';
+import { Header, H1, ViewButton, ButtonContainer, Description } from '../../styles/Heading.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTh, faList } from '@fortawesome/free-solid-svg-icons';
 
@@ -22,10 +22,6 @@ export const Heading = () => {
         Discover a stunning collection of photos with our gallery, powered by the Unsplash API and ReactJS. Explore and find the perfect images for your needs.
       </Description>
 
-      <form>
-        <Input type="text" placeholder="Search photos" />
-        <Button>Search</Button>
-      </form>
       <ButtonContainer>
         <ViewButton onClick={() => handleViewChange('grid')} title="Grid View">
           <FontAwesomeIcon icon={faTh} />
