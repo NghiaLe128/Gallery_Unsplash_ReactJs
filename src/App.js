@@ -23,21 +23,21 @@ function App() {
     try {
       const newImages = await fetchPhotos(page);
       if (newImages.length > 0) {
-        setImages((prev) => [...prev, ...newImages]);
+        setImages((prev) => [...prev, ...newImages]); // Append new images to state
         setPage((prev) => prev + 1);
       } else {
-        setHasMore(false);
+        setHasMore(false); // No more images to load
       }
     } catch (error) {
       console.error("Error fetching images:", error);
     } finally {
-      setLoading(false);
-    }
-  }, [loading, hasMore, page]); 
+      setLoading(false); // Reset loading state
+    } 
+  }, [loading, hasMore, page]); // Dependencies for useCallback
 
   useEffect(() => {
     fetchImages(); 
-  }, [fetchImages]); 
+  }, [fetchImages]); // Dependency to call fetchImages again if it changes
 
   return (
     <Router>

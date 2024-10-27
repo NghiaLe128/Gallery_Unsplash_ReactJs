@@ -15,6 +15,7 @@ const PhotoDetail = () => {
       if (!photo) {
         try {
           const fetchedPhoto = await fetchPhotoById(id);
+          
           setPhoto(fetchedPhoto);
         } catch (error) {
           console.error("Error loading photo:", error);
@@ -43,6 +44,8 @@ const PhotoDetail = () => {
         <h1>{photoTitle}</h1>
         <h2>By {photo.user.name}</h2>
         <p>{photoDescription}</p>
+        <p><strong>Likes:</strong> {photo.likes || 0}</p>
+
       </InfoContainer>
     </WrapperDetail>
   );

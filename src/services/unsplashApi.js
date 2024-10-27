@@ -16,6 +16,8 @@ export const fetchPhotos = async (page = 1) => {
       id: photo.id,
       urls: photo.urls,
       user: photo.user,
+      likes: photo.likes,
+      description: photo.description
     }));
   } catch (error) {
     if (error.response && error.response.status === 403) {
