@@ -1,16 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import { Img, AuthorName, ImageWrapper, Thumbnail } from '../../styles/UnsplashImage.styles';
 
 export const UnsplashImage = ({ url, author, thumbnail, image }) => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleImageClick = () => {
-    navigate('/photo-detail', { state: { image } }); // Navigate to detail page with image data
+    navigate(`/photos/${image.id}`, { state: { image } }); 
   };
 
   return (
-    <ImageWrapper onClick={handleImageClick}> {/* Add onClick to the ImageWrapper */}
+    <ImageWrapper onClick={handleImageClick}>
       <Img src={url} alt={author} />
       <AuthorName>
         <Thumbnail src={thumbnail} alt={`${author}'s thumbnail`} />

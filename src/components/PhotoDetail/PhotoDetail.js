@@ -1,14 +1,15 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { WrapperDetail, ImageContainer, InfoContainer, BackIcon } from '../../styles/PhotoDetail.styles';
-import { FaArrowLeft } from 'react-icons/fa'; 
+import { FaArrowLeft } from 'react-icons/fa';
 
 const PhotoDetail = () => {
+  const { id } = useParams(); 
   const location = useLocation();
-  const navigate = useNavigate(); // Use navigate to go back
+  const navigate = useNavigate();
   const { image } = location.state || {};
 
-  if (!image) {
+  if (!image || image.id !== id) {
     return <p>Photo not found.</p>;
   }
 
@@ -19,7 +20,7 @@ const PhotoDetail = () => {
     <WrapperDetail>
       <ImageContainer>
         <BackIcon onClick={() => navigate(-1)}>
-          <FaArrowLeft size={24} color="#007bff" /> {/* Use the back icon */}
+          <FaArrowLeft size={24} color="#007bff" />
         </BackIcon>
         <img src={image.urls.full} alt={photoDescription} />
       </ImageContainer>
