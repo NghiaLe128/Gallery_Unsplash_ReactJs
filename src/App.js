@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Heading } from './components/Heading/Heading';
 import { UnsplashImage } from './components/UnsplashImage/UnsplashImage';
 import { Loader } from './components/Loader/Loader';
@@ -14,16 +14,11 @@ function App() {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchImages();
-  }, []);
-
-  const fetchImages = async () => {
+  const fetchImages = useCallback(async () => {
     if (loading || !hasMore) return;
     setLoading(true);
 
-    // Simulate a loading delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     try {
       const newImages = await fetchPhotos(page);
@@ -38,7 +33,11 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [loading, hasMore, page]); 
+
+  useEffect(() => {
+    fetchImages(); 
+  }, [fetchImages]); 
 
   return (
     <Router>
